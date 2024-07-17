@@ -20,6 +20,8 @@ security:
                 # "app_login" is the name of the route created previously
                 login_path: app.login
                 check_path: app.login
+                #enable_csrf: true
+            logout:
             logout:
                 path: /logout
                 target: //
