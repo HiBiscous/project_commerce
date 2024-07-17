@@ -40,18 +40,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank()]
     #[Assert\Length(max: 255, message: 'Le nom ne doit pas depasser {{ limit }} caractères')]
 
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank()]
     #[Assert\Length(max: 255, message: 'Le nom de famille ne doit pas depasser {{ limit }} caractères')]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 10, nullable: true)]
-    #[Assert\NotBlank()]
     #[Assert\Regex('/(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/g')]
     private ?string $telephone = null;
 

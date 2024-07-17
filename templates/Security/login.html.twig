@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Se Connecter
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<h1 class="text-center">Se connecter</h1>
+		<form action="#" method="POST" class="card w-50 mx-auto">
+
+			<div class="mb-2">
+				<label for="email" class="form-label">Email</label>
+				<input type="email" class="form-control" name="_username" id="email" placeholder="aze@exemple.com">
+			</div>
+
+			<div class="mb-2">
+				<label for="password" class="form-label">Mot de Passe</label>
+				<input type="password" class="form-control" name="_password" id="password" placeholder="S3CR3T">
+			</div>
+
+			<input type="hidden" name="">
+			<buttun class="btn btn-primary">Se connecter</buttun>
+		</form>
+	</section>
+{% endblock %}

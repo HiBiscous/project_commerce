@@ -22,7 +22,6 @@ security:
                 check_path: app.login
                 #enable_csrf: true
             logout:
-            logout:
                 path: /logout
                 target: //
 
