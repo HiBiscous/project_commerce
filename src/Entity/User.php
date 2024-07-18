@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: ['Cet email existe déjà'])]
+#[UniqueEntity(fields: ['email'], message: 'Cet email existe déjà')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -40,16 +40,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\Length(max: 255, message: 'Le nom ne doit pas depasser {{ limit }} caractères')]
+    #[Assert\Length(max: 255, maxMessage: 'Le nom ne doit pas depasser {{ limit }} caractères')]
 
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\Length(max: 255, message: 'Le nom de famille ne doit pas depasser {{ limit }} caractères')]
+    #[Assert\Length(max: 255, maxMessage: 'Le nom de famille ne doit pas depasser {{ limit }} caractères')]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 10, nullable: true)]
-    #[Assert\Regex('/(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/g')]
     private ?string $telephone = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
