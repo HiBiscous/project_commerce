@@ -83,7 +83,7 @@ class UserType extends AbstractType
                         'placeholder' => 'S3CR3T',
                     ],
                 ],
-                //pour hasher le most de passe
+                //pour hasher le most de passe, sinon il affichera le mot de passe en clair
                 'mapped' => false,
             ]);
 
