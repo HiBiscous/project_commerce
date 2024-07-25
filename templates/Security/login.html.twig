@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Se Connecter
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<h1 class="text-center">Se connecter</h1>
+		<form action="{{path('app.login')}}" method="POST" class="card w-50 mx-auto">
+			{% if errors %}
+				<div class="alert alert-danger">{{errors.messageKey|trans(errors.messageData, 'security')}}</div>
+			{% endif %}
+			<div class="mb-2">
+				<label for="email" class="form-label">Email</label>
+				<input type="email" class="form-control" name="_username" id="email" placeholder="aze@exemple.com">
+			</div>
+
+			<div class="mb-2">
+				<label for="password" class="form-label">Mot de Passe</label>
+				<input type="password" class="form-control" name="_password" id="password" placeholder="S3CR3T">
+			</div>
+
+			{# uniquement sur les form fait main #}
+			{# si fait block form_start, pas besoin car deja inclut dedans #}
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<button type="submit" class="btn btn-primary">Se connecter</button>
+		</form>
+	</section>
+{% endblock %}
