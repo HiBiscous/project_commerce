@@ -99,7 +99,9 @@ class UserType extends AbstractType
                         'Editeur' => 'ROLE_EDITOR',
                         'Administrateur' => 'ROLE_ADMIN',
                     ],
+                    // pas de menu deroulant
                     'expanded' => true,
+                    // plusieur checkbox
                     'multiple' => true,
                 ]);
         }

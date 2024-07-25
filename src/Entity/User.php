@@ -48,11 +48,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(max: 255, maxMessage: 'Le nom de famille ne doit pas depasser {{ limit }} caractères')]
     private ?string $lastName = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    // #[Assert\Regex(
-    //     pattern: '/^(?:(?:+|00)33[\s.-]?[67]|0[\s.-]?[67])(?:[\s.-]*\d{2}){4}$/',
-    //     message: 'Numero invalid'
-    // )]
+    #[ORM\Column(length: 20, nullable: true)]
+    #[Assert\Regex(
+        pattern: '/^(?:(?:\+|00)33[\s.-]?[67]|0[\s.-]?[67])(?:[\s.-]*\d{2}){4}$/',
+        message: 'Invalid phone number'
+    )]
     private ?string $telephone = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
