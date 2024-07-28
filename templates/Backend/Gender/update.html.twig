@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modifier
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+
+	<h1 class="text-center">Modifier le Genre</h1>
+	{{ form_start(form, {
+    		attr: {class: 'card w-50 mx-auto'}
+		}) }}
+	{{ form_widget(form) }}
+
+	<button type="submit" class="btn btn-primary">Modifier</button>
+	{{ form_end(form) }}
+
+{% endblock %}
