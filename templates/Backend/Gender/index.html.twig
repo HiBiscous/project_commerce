@@ -11,7 +11,7 @@
 		<div>
 			{% for gender in genders %}
 
-				<p>{{ gender.name }}</p>
+				<h3>{{ gender.name }}</h3>
 				<p>{{ gender.enable ? 'Actif' : 'Inactif' }}</p>
 				<a href="{{path('admin.gender.update', {id:gender.id} ) }}" class="btn btn-primary">Modifier</a>
 				<form action="{{ path('admin.gender.delete', {id: gender.id}) }}" method="POST" onsubmit="return confirm('Etes vous sûr de vouloir supprimer ce genre ?')">
