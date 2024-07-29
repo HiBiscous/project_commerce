@@ -85,21 +85,14 @@ class ModelController extends AbstractController
             return $this->redirectToRoute('admin.model.index');
         }
 
-        $form = $this->createForm(ModelType::class, $model);
-        $form->handleRequest($request);
-
         if ($this->isCsrfTokenValid('delete' . $model->getId(), $request->request->get('token'))) {
             $this->em->remove($model);
             $this->em->flush();
 
             $this->addFlash('success', 'Le modèle a bien été supprimé');
-            return $this->redirectToRoute('admin.model.index');
         } else {
             $this->addFlash('error', 'Le jeton csrf est invalide');
         }
-
-        return $this->render('Backend\Model\index.html.twig', [
-            'form' => $form,
-        ]);
+        return $this->redirectToRoute('admin.model.index');
     }
 }

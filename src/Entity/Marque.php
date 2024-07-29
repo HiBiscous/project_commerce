@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MarqueRepository;
 use App\Traits\DateTrait;
 use App\Traits\EnableTrait;
+use App\Traits\ImageNameTrait;
 use App\Traits\SlugTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,6 +17,7 @@ class Marque
     use DateTrait;
     use EnableTrait;
     use SlugTrait;
+    use ImageNameTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,8 +33,7 @@ class Marque
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageName = null;
+
 
     public function getId(): ?int
     {
@@ -59,18 +60,6 @@ class Marque
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    public function setImageName(?string $imageName): static
-    {
-        $this->imageName = $imageName;
 
         return $this;
     }
