@@ -72,7 +72,7 @@ class ModelController extends AbstractController
             return $this->redirectToRoute('admin.model.index');
         }
 
-        return $this->render('Backend\Gender\update.html.twig', [
+        return $this->render('Backend\Model\update.html.twig', [
             'form' => $form,
         ]);
     }
