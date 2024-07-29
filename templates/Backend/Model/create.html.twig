@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Genre
+	Création d'un modèle
 	{{ parent() }}
 {% endblock %}
+
 {% block body %}
 	<section class="container">
-		<h1 class="text-center">Ajouter un genre</h1>
-		{{ dump() }}
+		<h1 class="text-center">Ajouter un modèle</h1>
 		{{ form_start(form) }}
 		{{ form_widget(form) }}
-
 		<button type="submit" class="btn btn-primary">Ajouter</button>
 		{{ form_end(form) }}
 	</section>

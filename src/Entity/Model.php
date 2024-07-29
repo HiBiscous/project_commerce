@@ -5,8 +5,8 @@ namespace App\Entity;
 use App\Repository\ModelRepository;
 use App\Traits\DateTrait;
 use App\Traits\EnableTrait;
+use App\Traits\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Src\Traits\SlugTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
