@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modèle
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<h1 class="text-center">Liste des modèles</h1>
+		<a href="{{path('admin.model.create')}}" class="btn btn-primary">Créer un modèle</a>
+
+		<div>
+			{% for model in models %}
+
+				<h3>{{model.name|capitalize }}</h3>
+				<p>{{model.enable ? 'Actif' : 'Inactif' }}</p>
+				<p>Slug:
+					{{model.slug}}</p>
+
+				<a href="{{path('admin.model.update', {id: model.id})}}" class="btn btn-primary">Modifier</a>
+				<form action="{{ path('admin.model.delete', {id: model.id}) }}" method="POST" onsubmit="return confirm('Etes vous sûr de vouloir supprimer ce genre ?')">
+					<input type="hidden" name="token" value="{{csrf_token('delete' ~ model.id)}}">
+					<button type="submit" class="btn btn-danger">Supprimer</button>
+				</form>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

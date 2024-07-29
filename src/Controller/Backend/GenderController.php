@@ -52,7 +52,6 @@ class GenderController extends AbstractController
     {
         if (!$gender) {
             $this->addFlash('error', 'Le genre demandé n\'existe pas');
-
             return $this->redirectToRoute('admin.gender.index');
         }
 
