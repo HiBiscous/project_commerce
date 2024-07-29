@@ -23,24 +23,24 @@ class MarqueType extends AbstractType
             ->add('description', TextType::class, [
                 'label' => 'Description',
                 'attr' => [
-                    'placheholder' => 'Description de la marque'
+                    'placeholder' => 'Description de la marque'
                 ]
             ])
             ->add('imageName', TextType::class, [
-                'label' => 'Nom de l\image',
+                'label' => 'Nom de l\'image',
                 'attr' => [
                     'placeholder' => 'Nom de l\'image'
                 ]
-            ])
-            ->add('enable', CheckboxType::class, [
-                'label' => 'Actif',
-                'required' => false,
             ])
             ->add('slug', TextType::class, [
                 'label' => 'Slug',
                 'attr' => [
                     'placeholder' => 'Nom du slug'
                 ]
+            ])
+            ->add('enable', CheckboxType::class, [
+                'label' => 'Actif',
+                'required' => false,
             ]);
     }
 

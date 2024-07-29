@@ -1,13 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Marque
+{% block title %}
+	Marque
 	{{ parent() }}
 {% endblock %}
 
 {% block body %}
 	<section class="container">
-		<h1 class="text-center">Liste des marques</h1>
+		<h1 class="text-center">Administration des marques</h1>
+		<a href="{{path('admin.marque.create')}}" class="btn btn-primary">Ajouter une marque</a>
+		<div>
+			{% for marque in marques %}
+				<h3>{{marque.name|capitalize}}</h3>
+				<p>Description:
+					{{marque.description}}</p>
+				<p>Nom de l'image:
+					{{marque.imageName}}</p>
+				<p>Slug:
+					{{marque.slug}}</p>
+				<p>{{marque.enable ? 'Actif' : 'Inactif'}}</p>
+				<a href="{{path('admin.marque.update', {id: marque.id})}}" class="btn btn-primary">Modifier</a>
 
+				<form action="{{path('admin.marque.delete', {id: marque.id})}}" method="POST" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette marque ?')">
+					<input type="hidden" name="token" value="{{csrf_token('delete' ~ marque.id)}}">
+					<button type="submit" class="btn btn-danger">Supprimer</button>
+				</form>
+			{% endfor %}
+		</div>
 
 	</section>
 {% endblock %}
