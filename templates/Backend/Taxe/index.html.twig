@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Taxe
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<h1 class="text-center">Administration des taxes</h1>
+		<a href="{{path('admin.taxe.create')}}" class="btn btn-primary">Ajouter une taxe</a>
+		{% for taxe in taxes %}
+			<h3>{{taxe.name}}</h3>
+			<p>{{taxe.rate}}%</p>
+			<p>{{taxe.enable ? 'Actif' : 'Inactif'}}</p>
+
+			<a href="{{path('admin.taxe.update', {id: taxe.id})}}" class="btn btn-primary">Modifier</a>
+			{% include "Backend/Taxe/__deleteForm.html.twig" %}
+
+		{% endfor %}
+	</section>
+{% endblock %}
