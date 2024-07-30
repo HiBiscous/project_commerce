@@ -6,7 +6,6 @@ use App\Entity\Model;
 use App\Form\ModelType;
 use App\Repository\ModelRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddSwiftMailerTransportPass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -38,7 +37,6 @@ class ModelController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $model->setCreatedAt(new \DateTimeImmutable());
-            $model->setUpdatedAt(new \DateTimeImmutable());
             $this->em->persist($model);
             $this->em->flush();
 
