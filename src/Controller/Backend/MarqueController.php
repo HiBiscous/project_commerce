@@ -35,7 +35,6 @@ class MarqueController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $marque->setCreatedAt(new \DateTimeImmutable());
             $this->em->persist($marque);
             $this->em->flush();
 
@@ -60,7 +59,6 @@ class MarqueController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $marque->setUpdatedAt(new \DateTimeImmutable());
             $this->em->persist($marque);
             $this->em->flush();
 
@@ -82,22 +80,15 @@ class MarqueController extends AbstractController
             return $this->redirectToRoute('admin.marque.index');
         }
 
-        $form = $this->createForm(MarqueType::class, $marque);
-        $form->handleRequest($request);
-
         if ($this->isCsrfTokenValid('delete' . $marque->getId(), $request->request->get('token'))) {
             $this->em->remove($marque);
             $this->em->flush();
 
             $this->addFlash('success', 'La marque a bien été supprimé');
-
-            return $this->redirectToRoute('admin.marque.index');
         } else {
             $this->addFlash('error', 'Le jeton csrf est invalide');
         }
 
-        return $this->render('Backend/Marque/index.html.twig', [
-            'form' => $form
-        ]);
+        return $this->redirectToRoute('admin.marque.index');
     }
 }

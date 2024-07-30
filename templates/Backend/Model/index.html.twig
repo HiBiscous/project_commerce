@@ -19,10 +19,7 @@
 					{{model.slug}}</p>
 
 				<a href="{{path('admin.model.update', {id: model.id})}}" class="btn btn-primary">Modifier</a>
-				<form action="{{ path('admin.model.delete', {id: model.id}) }}" method="POST" onsubmit="return confirm('Etes vous sûr de vouloir supprimer ce genre ?')">
-					<input type="hidden" name="token" value="{{csrf_token('delete' ~ model.id)}}">
-					<button type="submit" class="btn btn-danger">Supprimer</button>
-				</form>
+				{% include "Backend/Model/__deleteForm.html.twig" %}
 			{% endfor %}
 		</div>
 	</section>

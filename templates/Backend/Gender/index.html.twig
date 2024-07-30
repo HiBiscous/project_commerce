@@ -14,10 +14,7 @@
 				<h3>{{ gender.name }}</h3>
 				<p>{{ gender.enable ? 'Actif' : 'Inactif' }}</p>
 				<a href="{{path('admin.gender.update', {id:gender.id} ) }}" class="btn btn-primary">Modifier</a>
-				<form action="{{ path('admin.gender.delete', {id: gender.id}) }}" method="POST" onsubmit="return confirm('Etes vous sûr de vouloir supprimer ce genre ?')">
-					<input type="hidden" name="token" value="{{csrf_token('delete' ~ gender.id)}}">
-					<button type="submit" class="btn btn-danger">Supprimer</button>
-				</form>
+				{% include "Backend/Gender/__deleteForm.html.twig" %}
 
 			{% endfor %}
 		</div>

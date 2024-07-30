@@ -11,11 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: ModelRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Model
 {
-    use EnableTrait;
-    use SlugTrait;
-    use DateTrait;
+    use EnableTrait,
+        SlugTrait,
+        DateTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

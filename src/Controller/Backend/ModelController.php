@@ -6,7 +6,6 @@ use App\Entity\Model;
 use App\Form\ModelType;
 use App\Repository\ModelRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddSwiftMailerTransportPass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -38,7 +37,6 @@ class ModelController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $model->setCreatedAt(new \DateTimeImmutable());
-            $model->setUpdatedAt(new \DateTimeImmutable());
             $this->em->persist($model);
             $this->em->flush();
 
@@ -63,8 +61,6 @@ class ModelController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $model->setUpdatedAt(new \DateTimeImmutable());
-
             $this->em->persist($model);
             $this->em->flush();
 
@@ -72,7 +68,7 @@ class ModelController extends AbstractController
             return $this->redirectToRoute('admin.model.index');
         }
 
-        return $this->render('Backend\Gender\update.html.twig', [
+        return $this->render('Backend\Model\update.html.twig', [
             'form' => $form,
         ]);
     }
@@ -85,21 +81,14 @@ class ModelController extends AbstractController
             return $this->redirectToRoute('admin.model.index');
         }
 
-        $form = $this->createForm(ModelType::class, $model);
-        $form->handleRequest($request);
-
         if ($this->isCsrfTokenValid('delete' . $model->getId(), $request->request->get('token'))) {
             $this->em->remove($model);
             $this->em->flush();
 
             $this->addFlash('success', 'Le modèle a bien été supprimé');
-            return $this->redirectToRoute('admin.model.index');
         } else {
             $this->addFlash('error', 'Le jeton csrf est invalide');
         }
-
-        return $this->render('Backend\Model\index.html.twig', [
-            'form' => $form,
-        ]);
+        return $this->redirectToRoute('admin.model.index');
     }
 }

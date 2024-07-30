@@ -5,17 +5,20 @@ namespace App\Entity;
 use App\Repository\MarqueRepository;
 use App\Traits\DateTrait;
 use App\Traits\EnableTrait;
+use App\Traits\ImageNameTrait;
 use App\Traits\SlugTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MarqueRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Marque
 {
     use DateTrait;
     use EnableTrait;
     use SlugTrait;
+    use ImageNameTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,11 +31,10 @@ class Marque
     private ?string $name = null;
 
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageName = null;
+
 
     public function getId(): ?int
     {
@@ -59,18 +61,6 @@ class Marque
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    public function setImageName(?string $imageName): static
-    {
-        $this->imageName = $imageName;
 
         return $this;
     }

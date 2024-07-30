@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Modifier le Modele
+	Modifier la marque
 	{{ parent() }}
 {% endblock %}
-
 {% block body %}
-	<h1 class="text-center">Modifier le modèle</h1>
-	{{ form_start(form)}}
+
+	<h1 class="text-center">Modifier la marque</h1>
+	{{ form_start(form) }}
 	{{ form_widget(form) }}
 
 	<button type="submit" class="btn btn-primary">Modifier</button>

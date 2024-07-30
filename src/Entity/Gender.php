@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Gender
 {
     use EnableTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
