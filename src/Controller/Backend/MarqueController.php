@@ -35,7 +35,6 @@ class MarqueController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $marque->setCreatedAt(new \DateTimeImmutable());
             $this->em->persist($marque);
             $this->em->flush();
 
@@ -60,7 +59,6 @@ class MarqueController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $marque->setUpdatedAt(new \DateTimeImmutable());
             $this->em->persist($marque);
             $this->em->flush();
 

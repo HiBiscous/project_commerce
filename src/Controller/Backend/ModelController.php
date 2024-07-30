@@ -61,8 +61,6 @@ class ModelController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $model->setUpdatedAt(new \DateTimeImmutable());
-
             $this->em->persist($model);
             $this->em->flush();
 

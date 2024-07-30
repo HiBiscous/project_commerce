@@ -20,11 +20,8 @@
 					{{marque.slug}}</p>
 				<p>{{marque.enable ? 'Actif' : 'Inactif'}}</p>
 				<a href="{{path('admin.marque.update', {id: marque.id})}}" class="btn btn-primary">Modifier</a>
+				{% include "Backend/Marque/__deleteForm.html.twig" %}
 
-				<form action="{{path('admin.marque.delete', {id: marque.id})}}" method="POST" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette marque ?')">
-					<input type="hidden" name="token" value="{{csrf_token('delete' ~ marque.id)}}">
-					<button type="submit" class="btn btn-danger">Supprimer</button>
-				</form>
 			{% endfor %}
 		</div>
 

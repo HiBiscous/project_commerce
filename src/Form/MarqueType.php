@@ -24,7 +24,8 @@ class MarqueType extends AbstractType
                 'label' => 'Description',
                 'attr' => [
                     'placeholder' => 'Description de la marque'
-                ]
+                ],
+                'required' => false,
             ])
             ->add('imageName', TextType::class, [
                 'label' => 'Nom de l\'image',
